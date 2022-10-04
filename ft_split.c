@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:20:07 by arforgea          #+#    #+#             */
-/*   Updated: 2022/10/03 22:19:23 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/10/04 16:56:56 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -30,95 +30,45 @@ int	ft_nb_line(char const *str, char c)
 	return (nb_line);
 }
 
-void	set_tab(char **tab, char const *buff, char c)
+int	ft_nb_char(char const *str, char c, int *index)
 {
-	int	i;
-	int	j;
-	int	w;
+	int	nb_char;
 
-	i = 0;
-	j = 0;
-	w = 0;
-	while (buff[i] != '\0')
+	nb_char = 0;
+	while (str[*index] && str[*index] == c)
+		(*index)++;
+	while (str[*index] && str[*index] != c)
 	{
-		while (buff[i] && buff[i] == c)
-			i++;
-		while (buff[i] && buff[i] != c)
-		{
-			tab[j][w] = buff[i];
-			w++;
-			i++;
-		}
-		tab[j][w] = '\0';
-		w = 0;
-		j++;
-		while (buff[i] && buff[i] == c)
-			i++;
+		(*index)++;
+		nb_char++;
 	}
+	return (nb_char);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		nb_line;
+	char	**f_tab;
+	int		index;
 	int		nb_char;
-	char	**final_tab;
+	int		nb_line;
+	int		i;
 
-	i = -1;
-	j = -1;
 	if (!s)
-		return (0);
-	if (!ft_strlen((char *)s))
-		return ((char **)ft_strdup(""));
+		return (NULL);
+	index = 0;
 	nb_line = ft_nb_line(s, c);
-	nb_char = 0;
-	if (!nb_line)
-		return ((char **)ft_strdup(""));
-	final_tab = malloc(sizeof(char *) * nb_line);
-	if (!final_tab)
-		return (0);
-	i = -1;
-	while (s[++i] != '\0')
+	f_tab = malloc(sizeof(char *) * (nb_line + 1));
+	if (!f_tab)
+		return (NULL);
+	i = 0;
+	while (i != nb_line)
 	{
-		while (s[i] && s[++i] != c)
-			nb_char++;
-		final_tab[++j] = malloc(sizeof(char) * nb_char);
+		nb_char = ft_nb_char(s, c, &index);
+		f_tab[i] = ft_calloc(1, nb_char + 1);
+		ft_strlcpy(f_tab[i], s + (index - nb_char), nb_char + 1);
 		nb_char = 0;
-	}
-	set_tab(final_tab, s, c);
-	return (final_tab);
-}
-
-
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	// char *str = "Salut  l'amis...                      comment  va  ?";
-	// char *str = "      split       this for   me  !       ";
-	// char *str = "                              ";
-	// char	*str = "                  olol";
-	// char	*str = "split  ||this|for|me|||||!|";
-	// char	*str = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
-	char	*str = "\0aa\0bbb";
-	char **final_tab = ft_split(str, '\0');
-
-	printf("str [%s]\n", str);
-	int i = 0;
-	while (i <= ft_nb_line(str, '\0'))
-	{
-		printf("%s\n", final_tab[i]);
 		i++;
 	}
-	return (0);
+	f_tab[i] = NULL;
+	return (f_tab);
 }
-
-// int	main(int argc, char **argv)
-// {
-// 	if (argc != 2)
-// 		return (1);
-// 	printf("nb_line[%d]\n", ft_nb_line(argv[1], ' '));
-// 	return (0);
-// }
