@@ -5,6 +5,8 @@ SRC = ft_itoa.c ft_striteri.c ft_strmapi.c ft_split.c ft_strtrim.c ft_strjoin.c 
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+SRC_BONUS = ft_lstmap.c ft_lstiter.c ft_lstclear.c ft_lstdelone.c ft_lstadd_back.c ft_lstlast.c ft_lstsize.c ft_lstnew.c ft_lstadd_front.c
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -13,12 +15,14 @@ $(NAME): $(OBJ)
 .c.o:
 	$(CC) $(CFLAGS) $< -c -o $@
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) $(OBJ_BONUS)
 fclean:	clean
 	rm -rf $(NAME)
 re: fclean all
+bonus: $(OBJ_BONUS) $(OBJ)
+	ar -rc $(NAME) $(OBJ_BONUS) $(OBJ)
 so:
 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
 	gcc -nostartfiles -shared -o libft.so $(OBJ)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
