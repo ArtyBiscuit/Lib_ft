@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 22:43:18 by arforgea          #+#    #+#             */
-/*   Updated: 2022/09/30 19:00:44 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:10:24 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 		return (src);
 	while (cmp--)
 	{
-		if (src[cmp] == c)
+		if (src[cmp] == (char)c)
 			return (src + cmp);
 	}
 	return (NULL);
