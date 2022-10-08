@@ -15,7 +15,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*final_tab;
 	size_t	s_len;
-	
 
 	if (!s)
 		return (NULL);

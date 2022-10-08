@@ -6,10 +6,9 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 19:36:20 by arforgea          #+#    #+#             */
-/*   Updated: 2022/09/30 19:56:20 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/10/08 14:41:23 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {
