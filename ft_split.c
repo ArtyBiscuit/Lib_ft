@@ -6,12 +6,12 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:20:07 by arforgea          #+#    #+#             */
-/*   Updated: 2022/10/04 16:56:56 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:37:58 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_nb_line(char const *str, char c)
+static int	ft_nb_line(char const *str, char c)
 {
 	int	i;
 	int	nb_line;
@@ -30,7 +30,7 @@ int	ft_nb_line(char const *str, char c)
 	return (nb_line);
 }
 
-int	ft_nb_char(char const *str, char c, int *index)
+static int	ft_nb_char(char const *str, char c, int *index)
 {
 	int	nb_char;
 

@@ -6,12 +6,12 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 04:21:12 by arforgea          #+#    #+#             */
-/*   Updated: 2022/10/08 14:39:54 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:36:58 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_tab_size(long nbr)
+static int	ft_tab_size(long nbr)
 {
 	int	size;
 
@@ -29,7 +29,7 @@ int	ft_tab_size(long nbr)
 	return (size);
 }
 
-void	ft_put_int(char *f_tab, int index, long nbr)
+static void	ft_put_int(char *f_tab, int index, long nbr)
 {
 	if (nbr < 0)
 	{

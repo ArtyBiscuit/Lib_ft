@@ -6,12 +6,12 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:22:34 by arforgea          #+#    #+#             */
-/*   Updated: 2022/10/03 20:17:10 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:12:12 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_stedstr(const char *str, const char *set, int index)
+static int	ft_stedstr(const char *str, const char *set, int index)
 {
 	int	i;
 

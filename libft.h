@@ -6,13 +6,12 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:56:26 by arforgea          #+#    #+#             */
-/*   Updated: 2022/10/05 23:51:51 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/10/09 18:11:41 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 
