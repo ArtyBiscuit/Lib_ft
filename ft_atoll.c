@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 19:36:20 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/02 17:32:41 by arforgea         ###   ########.fr       */
+/*   Created: 2023/01/02 18:37:19 by arforgea          #+#    #+#             */
+/*   Updated: 2023/01/02 18:37:44 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long long	ft_atoll(const char *nptr, int *flag)
 {
-	int	nbr;
-	int	neg;
+	long long	nbr;
+	long long	neg;
 
 	nbr = 0;
 	neg = 1;
@@ -29,6 +30,11 @@ int	ft_atoi(const char *nptr)
 	{
 		nbr *= 10;
 		nbr += *nptr - 48;
+		if (nbr * neg > 2147483647 || nbr * neg < -2147483648)
+		{
+			*flag = 1;
+			return (0);
+		}
 		nptr++;
 	}
 	return (nbr * neg);

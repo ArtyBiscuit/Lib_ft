@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_secur_cat.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 19:36:20 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/02 17:32:41 by arforgea         ###   ########.fr       */
+/*   Created: 2022/11/02 19:02:10 by arforgea          #+#    #+#             */
+/*   Updated: 2023/01/14 23:17:15 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_atoi(const char *nptr)
+char	*ft_secur_cat(char *s1, char *s2)
 {
-	int	nbr;
-	int	neg;
+	int		s_s1;
+	int		s_s2;
+	char	*f_str;
 
-	nbr = 0;
-	neg = 1;
-	while (*nptr == 32 || (*nptr >= 8 && *nptr <= 13))
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+	s_s1 = 0;
+	s_s2 = 0;
+	if (s1)
+		s_s1 = ft_strlen(s1);
+	if (s2)
+		s_s2 = ft_strlen(s2);
+	f_str = malloc(sizeof(char) * (s_s1 + s_s2) + 1);
+	if (s1)
 	{
-		if (*nptr == '-')
-			neg *= -1;
-		nptr++;
+		ft_strlcpy(f_str, s1, s_s1 + 1);
+		free(s1);
+		s1 = NULL;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	if (s2)
 	{
-		nbr *= 10;
-		nbr += *nptr - 48;
-		nptr++;
+		ft_strlcpy(f_str + s_s1, s2, s_s2 + 1);
+		free(s2);
+		s2 = NULL;
 	}
-	return (nbr * neg);
+	return (f_str);
 }
